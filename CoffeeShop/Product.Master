@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Product.master.cs" Inherits="CoffeeShop.Product" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+      <table style="width:1100px; margin:0 auto"  >
+        <tr style="width:1100px; height:50px">
+            <td style="width:60px;">
+                <img src="Images/logo.png" style="height: 81px; width: 81px" />
+            </td>
+            <td class="auto-style1">CoffeeShop.com</td>
+            <td style="width:900px; text-align:right;">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/facebook-icon.png" /> &nbsp;&nbsp; <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Images/Instagram-icon.png" /> &nbsp;&nbsp; <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/Images/Twitter-icon.png" />
+                <br />
+                <div id="cart">
+                    <br />
+                    <a class="cart-link" href="ViewCart.aspx">Your Shopping Cart</a><span><br />
+                    <span>Total Items: <asp:Label ID="CartTotalItem" runat="server" Text="0"></asp:Label></span> &nbsp;&nbsp; <span>Cost: £<asp:Label ID="CartTotalPrice" runat="server" Text="0"></asp:Label>
+                    <br />
+                    </span>
+                         <%
+                if(Session["Username"] == null)
+                {
+                    %>
+           <asp:LinkButton ID="lnkbtnLogin" runat="server" PostBackUrl="~/Login.aspx">Login</asp:LinkButton> &nbsp;|&nbsp;  <asp:LinkButton ID="lnkbtn" runat="server" PostBackUrl="~/Registration.aspx">Register</asp:LinkButton>
+
+                    <%
+                }
+                else
+                {
+                    %>
+
+            <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/logout.aspx">Logout</asp:LinkButton>
+                    <%
+                }
+                 %>
+
+                          
+                </div>
+                </td>
+           
+        </tr>
+
+        <tr style="width:1100px; height:40px; background-color: #c49a68;">
+            <td colspan ="3">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Products" Value="Products" NavigateUrl="~/Display.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="About Us" Value="About" NavigateUrl="~/AboutUs.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Contact Us" Value="Contact" NavigateUrl="~/ContactUs.aspx"></asp:MenuItem>
+                    </Items>
+                    <StaticHoverStyle BackColor="#7D4A36" ForeColor="Black" />
+                    <StaticMenuItemStyle Font-Size="Large" ForeColor="White" HorizontalPadding="30px" />
+                </asp:Menu>
+            </td>
+        </tr>
+
+        <tr style="width:1100px;">
+            <td colspan="3">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+                    <p class="auto-style2">
+                        &nbsp;</p>
+                    <p class="auto-style2">
+                        &nbsp;</p>
+                    <p class="auto-style2">
+                        &nbsp;</p>
+                    <p class="auto-style2">
+                        &nbsp;</p>
+        
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+
+        <tr style="width:1100px; height:20px; background-color:black; text-align:center; color:#c49a68">
+            <td colspan="3">
+Copyright © CoffeeShop. All rights Reserved.
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
